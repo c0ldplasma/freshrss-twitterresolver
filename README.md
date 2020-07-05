@@ -23,7 +23,7 @@ Then switch to your browser https://localhost/FreshRSS/p/i/?c=extension and acti
 
 ## Screenshots
 
-With FreshRSS and an original Youtube Channel feed:
+With FreshRSS and an original Twitter feed:
 ![screenshot before](https://github.com/c0ldplasma/freshrss-twitterresolver/blob/main/before.png "Without this extension the t.co link is shown")
 
 With activated TwitterResolver extension:
