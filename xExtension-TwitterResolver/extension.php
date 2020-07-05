@@ -35,7 +35,8 @@ class TwitterResolverExtension extends Minz_Extension
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $a = curl_exec($ch);
             $url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
-            $entry->content() = str_replace($match, $url, $entry->content());
+            $entry->_content(str_replace($matches[0], '<a href="' . $url . '">' . $url . '</a>', $entry->content()));
+            $entry->_title(str_replace($matches[0], $url, $entry->content()));
         }
 
         return $entry;
