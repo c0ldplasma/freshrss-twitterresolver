@@ -20,6 +20,7 @@ Then switch to your browser https://localhost/FreshRSS/p/i/?c=extension and acti
 # Features
 
 - Resolves t.co Twitter links to the actual URL behind it.
+- Makes the links clickable.
 
 ## Screenshots
 
