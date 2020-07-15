@@ -25,12 +25,16 @@ class TwitterResolverExtension extends Minz_Extension
     public function convertTwitterUrls($entry)
     {
         $matches = [];
-        while (preg_match('#https?://t\.co/[0-9a-zA-Z_-]{1,64}#', $entry->content(), $matches) === 1) {
+        $loops = 0;
+        while (preg_match('#https?://t\.co/[0-9a-zA-Z_-]{1,64}#', $entry->content(), $matches) === 1 && $loops <= 3) {
+            $loops++;
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $matches[0]);
             curl_setopt($ch, CURLOPT_HEADER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
             $a = curl_exec($ch);
             $url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
             if (strcasecmp($url, $matches[0]) !== 0) {
