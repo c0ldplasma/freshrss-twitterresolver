@@ -15,7 +15,7 @@ class TwitterResolverExtension extends Minz_Extension
      */
     public function init()
     {
-        $this->registerHook('entry_before_display', array($this, 'convertTwitterUrls'));
+        $this->registerHook('entry_before_insert', array($this, 'convertTwitterUrls'));
     }
 
     /**
